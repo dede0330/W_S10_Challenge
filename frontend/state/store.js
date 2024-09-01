@@ -1,15 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-
-const exampleReducer = (state = { count: 0 }) => {
-  return state
-}
+import {pizzaSlice} from './pizzaSlice'
 
 export const resetStore = () => configureStore({
   reducer: {
-    example: exampleReducer,
+  [pizzaSlice.reducerPath]: pizzaSlice.reducer
     // add your reducer(s) here
   },
   middleware: getDefault => getDefault().concat(
+    pizzaSlice.middleware
     // if using RTK Query for your networking: add your middleware here
     // if using Redux Thunk for your networking: you can ignore this
   ),
